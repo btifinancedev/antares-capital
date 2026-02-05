@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Career in Antares Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="shortcut icon" type="image/png"
+        href="https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/964/9080/image.svg" />
+    <link rel="stylesheet" href="styles.css">
+
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png"
+        href="https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/964/9080/image.svg" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#e6f0ff',
+                            100: '#cce0ff',
+                            200: '#99c0ff',
+                            300: '#66a0ff',
+                            400: '#3380ff',
+                            500: '#0060ff',
+                            600: '#001c71', // Primary
+                            700: '#001658',
+                            800: '#001040',
+                            900: '#000a28',
+                        },
+                        secondary: {
+                            50: '#f5a831',
+                            100: '#f5a831',
+                            200: '#f5a831',
+                            300: '#f5a831',
+                            400: '#f5a831',
+                            500: '#f5a831', // Secondary
+                            600: '#f5a831',
+                            700: '#f5a831',
+                            800: '#f5a831',
+                            900: '#f5a831',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @media (min-width: 991.98px) {
+            .page-banner.overlay:not(.no-overlay)::before {
+                opacity: 0.85;
+            }
+        }
+
+        .page-banner.overlay:not(.no-overlay)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #001b71b0;
+        }
+
+        /* Replace all reds and transparent reds with #001b71 */
+        .text-red-500,
+        .text-red-600,
+        .text-red-700,
+        .text-red-800,
+        .text-red-900,
+        .bg-red-500,
+        .bg-red-600,
+        .bg-red-700,
+        .bg-red-800,
+        .bg-red-900,
+        .border-red-500,
+        .border-red-600,
+        .border-red-700,
+        .border-red-800,
+        .border-red-900,
+        .hover\:text-red-500:hover,
+        .hover\:text-red-600:hover,
+        .hover\:text-red-700:hover,
+        .hover\:text-red-800:hover,
+        .hover\:text-red-900:hover,
+        .hover\:bg-red-500:hover,
+        .hover\:bg-red-600:hover,
+        .hover\:bg-red-700:hover,
+        .hover\:bg-red-800:hover,
+        .hover\:bg-red-900:hover {
+            color: #001b71 !important;
+            background-color: #001b71 !important;
+            border-color: #001b71 !important;
+        }
+
+        .bg-transparent {
+            background-color: #001b71 !important;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="brand"><img
+                    src="https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/964/9080/image.svg"
+                    alt="Antares" style="height: 40px;"></a>
+            <div class="nav-links">
+                <a href="#about">About us</a>
+                <a href="#vacancies">Vacancies</a>
+                <a href="#contact" class="btn btn-primary">Contact Us</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-banner overlay relative bg-cover bg-center bg-no-repeat"
+        style="background-image: url(https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/1035/9564/image_resized.jpg);">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-white">Careers</h1>
+            </div>
+        </div>
+    </header>
+    <section class="py-16 bg-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Legacy Experience, Entrepreneurial Spirit
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Fueled by a culture of integrity and high performance, Antares is fully committed to
+                    providing reliable credit solutions that create lasting value for our partners. Do
+                    you have what it takes to join our firm of industry-leading professionals?
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Categories Section -->
+    <section class="categories section bg-light" id="vacancies">
+        <div class="container">
+            <div class="section-header left">
+                <span class="section-tag">Are you passionate about doing your best work? We'd love to meet you!</span>
+                <h2 class="section-title">All vacancies </h2>
+
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-header">
+                        <span class="category-count">Multiple vacancies</span>
+                        <h3>Remote Data Analyst</h3>
+                    </div>
+                    <p>Analyze financial data, create reports, and provide insights to support decision-making.</p>
+                    <a href="#" class="category-link">Apply Now <i data-lucide="arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <span class="category-count">Multiple vacancies</span>
+                        <h3>Remote Book Keeper</h3>
+                    </div>
+                    <p>Manage financial records, process transactions, and maintain accurate accounting documentation.</p>
+                    <a href="#" class="category-link">Apply Now <i data-lucide="arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <span class="category-count">Multiple vacancies</span>
+                        <h3>Remote Accountant</h3>
+                    </div>
+                    <p>Prepare financial statements, handle tax compliance, and provide strategic financial guidance.</p>
+                    <a href="#" class="category-link">Apply Now <i data-lucide="arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <span class="category-count">Multiple vacancies</span>
+                        <h3>Remote Account Payable</h3>
+                    </div>
+                    <p>Process vendor payments, manage invoices, and ensure timely payment processing.</p>
+                    <a href="#" class="category-link">Apply Now <i data-lucide="arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <span class="category-count">Multiple vacancies</span>
+                        <h3>Remote Financial Analyst</h3>
+                    </div>
+                    <p>Conduct financial modeling, market analysis, and investment recommendations.</p>
+                    <a href="#" class="category-link">Apply Now <i data-lucide="arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <span class="category-count">Multiple vacancies</span>
+                        <h3>Remote Customer Care Rep</h3>
+                    </div>
+                    <p>Provide excellent customer service, resolve inquiries, and maintain client relationships.</p>
+                    <a href="#" class="category-link">Apply Now <i data-lucide="arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Perks Section -->
+    <section class="perks section">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">Perks</span>
+                <h2 class="section-title">Main Reasons Why You Should Work Here</h2>
+                <p class="section-description">Being a part of Antares Capital means enjoying every working day!</p>
+            </div>
+            <div class="perks-grid">
+                <div class="perk-card">
+                    <div class="perk-icon-wrapper">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>Teamwork</h3>
+                    <p>Our employees work in teams and share even the boldest ideas.</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon-wrapper">
+                        <i data-lucide="lightbulb"></i>
+                    </div>
+                    <h3>Room for New Ideas</h3>
+                    <p>We’re always ready to listen and discuss new initiatives.</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon-wrapper">
+                        <i data-lucide="wallet"></i>
+                    </div>
+                    <h3>Competitive Salary</h3>
+                    <p>Get paid well for your skills! We offer competitive salary + benefits.</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon-wrapper">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3>Personal Development</h3>
+                    <p>We encourage you to study and cover your expenses on courses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Employees worldwide</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Years of work</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Offices around the world</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Fascinating projects</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Values Section -->
+    <section id="values" class="py-24 bg-brand-900 text-white relative overflow-hidden">
+        <!-- Background Decor -->
+        <div class="absolute inset-0 z-0 opacity-10">
+            <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
+                <div class="mb-12 lg:mb-0">
+                    <span class="text-brand-200 font-semibold tracking-wide uppercase text-sm">Our Culture</span>
+                    <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Working at Antares Capital means...</h2>
+                    <p class="mt-4 text-xl text-brand-100 leading-relaxed">
+                        Joining an international team of enthusiasts. We combine talent with cutting-edge tech to
+                        deliver global impact. We don't just work; we create, we solve, and we grow together.
+                    </p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-md bg-brand-800 text-white border border-brand-700">
+                                <i data-lucide="zap" class="h-6 w-6"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-white">Creativity at the core</h3>
+                            <p class="mt-2 text-base text-brand-200">Your ideas matter. We encourage you to challenge
+                                the status quo and improve processes.</p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-md bg-brand-800 text-white border border-brand-700">
+                                <i data-lucide="cpu" class="h-6 w-6"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-white">Modern Tech Stack</h3>
+                            <p class="mt-2 text-base text-brand-200">We don't settle for legacy. Use the latest tools
+                                and frameworks to do your best work.</p>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-md bg-brand-800 text-white border border-brand-700">
+                                <i data-lucide="globe" class="h-6 w-6"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-white">Global Impact</h3>
+                            <p class="mt-2 text-base text-brand-200">Collaborate with world-famous clients on projects
+                                that touch millions of lives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-gray-900 text-gray-300">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col space-y-8">
+                <!-- Social Links -->
+                <div class="flex justify-start">
+                    <nav id="social-navigation" aria-label="Social Navigation">
+                        <ul class="flex space-x-4">
+                            <li>
+                                <a href="https://www.linkedin.com/company/antares-capital-lp?trk=biz-companies-cym"
+                                    target="_blank" rel="noopener"
+                                    class="text-gray-400 hover:text-white transition-colors duration-200"
+                                    title="Opens in a new window">
+                                    <img class="h-6 w-6"
+                                        src="https://www.antares.com/_assets/_1fa46204d0f3f4a156902a46ac369f9c/antares/db/933/9051/icon/Linkedin.png"
+                                        alt="Visit us on LinkedIn">
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Address -->
+                <div class="flex justify-start">
+                    <div class="text-sm">
+                        Antares Capital<br>
+                        320 South Canal Street Chicago,<br>
+                        IL 60606
+                    </div>
+                </div>
+
+                <!-- Copyright and Links -->
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+                    <div class="text-sm text-gray-400">
+                        © Antares Capital LP. All Rights Reserved.
+                    </div>
+                    <nav id="footer-navigation" aria-label="Footer Navigation">
+                        <ul class="flex flex-wrap space-x-6 text-sm">
+                            <li>
+                                <a href="/terms-conditions"
+                                    class="hover:text-white transition-colors duration-200">Terms & Conditions</a>
+                            </li>
+                            <li>
+                                <a href="/privacy-policy"
+                                    class="hover:text-white transition-colors duration-200">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="/eu-gdpr-privacy-notice"
+                                    class="hover:text-white transition-colors duration-200">EU GDPR Privacy Notice</a>
+                            </li>
+                            <li>
+                                <a href="/accessibility-statement"
+                                    class="hover:text-white transition-colors duration-200">Accessibility Statement</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
